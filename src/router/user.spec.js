@@ -1,6 +1,6 @@
 import request from "supertest";
 import should from "should";
-import app from "./index";
+import app from "../index";
 
 describe("GET /users는,", () => {
     describe("성공시", () => {

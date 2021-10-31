@@ -4,8 +4,8 @@
     "description": "mocha stduy",
     "main": "index.js",
     "scripts": {
-        "dev": "nodemon src/index.js --exec babel-node",
-        "test": "mocha  -r @babel/register src/index.spec.js"
+        "dev": "nodemon src/app.js --exec babel-node",
+        "test": "NODE_ENV=test mocha  -r @babel/register src/router/user.spec.js"
     },
     "repository": {
         "type": "git",
