@@ -1,9 +1,18 @@
 import request from "supertest";
 import should from "should";
 import app from "../index";
+import { PrismaClient } from "@prisma/client";
+
+const prisma = new PrismaClient();
 
 describe("GET /users는,", () => {
     describe("성공시", () => {
+        // const users = [{ name: "kim" }, { name: "jojo" }, { name: "holo" }];
+        // before(async () => {
+        //     await prisma.user.createMany({
+        //         data: users,
+        //     });
+        // });
         it("유저 객체를 담은 배열로 응답함", (done) => {
             request(app)
                 .get("/users")
@@ -69,7 +78,7 @@ describe("DELETE /users:id", () => {
 
 describe("POST /users", () => {
     describe("성공시", () => {
-        let name = "daniel",
+        let name = "go2",
             body;
         before((done) => {
             request(app)
@@ -102,9 +111,9 @@ describe("POST /users", () => {
     });
 });
 
-describe("PUT /users/:id", () => {
+describe.only("PUT /users/:id", () => {
     describe("성공시", () => {
-        const name = "den";
+        const name = "den1";
         it("변경된 name 응답", (done) => {
             request(app)
                 .put("/users/3")
@@ -133,7 +142,7 @@ describe("PUT /users/:id", () => {
         it("이름이 중복일 경우 409", (done) => {
             request(app)
                 .put("/users/3")
-                .send({ name: "hyojin" })
+                .send({ name: "inhyeok" })
                 .expect(409)
                 .end(done);
         });
